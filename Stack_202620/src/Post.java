@@ -29,7 +29,7 @@ public class Post {
     @Override
     public String toString() {
         return "url: " + url + ", fecha= " +
-                fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+                fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss" + "\n"));
     }
 
 }
