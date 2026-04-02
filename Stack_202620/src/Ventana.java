@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.jar.JarOutputStream;
 
 public class Ventana {
     private JTextField txtUrl;
@@ -11,6 +10,8 @@ public class Ventana {
     private JButton btnCima;
     private JButton btnMostrar;
     private JTextArea txtListar;
+    private JButton btnLikes;
+    private JButton btnResetear;
 
     private Pila pila1=new Pila();
 
@@ -55,6 +56,29 @@ public class Ventana {
         btnMostrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                txtListar.setText(pila1.showAll());
+            }
+        });
+
+        btnLikes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    pila1.peek().aumentarlikes();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+                txtListar.setText(pila1.showAll());
+            }
+        });
+        btnResetear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    pila1.peek().resetearLikes();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
                 txtListar.setText(pila1.showAll());
             }
         });
